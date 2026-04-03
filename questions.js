@@ -1,270 +1,364 @@
 let banque=[
 
 {
-
-q:"Dans Excel, que fait la formule =SOMME(A1:A5) ?",
-
+q:"Dans Excel que fait =SOMME(A1:A5) ?",
 a:[
-"Additionne A1 à A5",
-"Supprime valeurs",
-"Trie colonnes",
-"Multiplie cellules"
+"Additionne cellules",
+"Supprime données",
+"Trie tableau",
+"Multiplie valeurs"
 ],
-
 r:0,
-
 exp:"SOMME additionne toutes les cellules."
-
 },
 
 {
-
-q:"Quelle formule Excel française correspond à A1+A2+A3 ?",
-
+q:"Quelle formule correspond à A1+A2+A3 ?",
 a:[
 "=SOMME(A1:A3)",
 "=ADD(A1:A3)",
-"=TOTAL(A1:A3)",
-"=PLUS(A1:A3)"
+"=PLUS(A1:A3)",
+"=TOTAL(A1:A3)"
 ],
-
 r:0,
-
 exp:"Excel FR utilise SOMME."
-
 },
 
 {
-
-q:"Tu veux créer une API qui retourne les utilisateurs. Quelle méthode ?",
-
+q:"Quelle méthode HTTP lit des données ?",
 a:[
 "GET",
 "POST",
 "DELETE",
 "PATCH"
 ],
-
 r:0,
-
-exp:"GET sert à lire données."
-
+exp:"GET = lecture."
 },
 
 {
-
-q:"Tu veux ajouter un utilisateur via API ?",
-
-
+q:"Quelle méthode crée une ressource ?",
 a:[
 "GET",
 "POST",
-"PATCH",
+"PUT",
 "READ"
 ],
-
 r:1,
-
-exp:"POST crée ressource."
-
+exp:"POST = Create."
 },
 
 {
-
-q:"Tu modifies seulement email user ?",
-
-
+q:"PATCH sert à :",
 a:[
-"PUT",
-"PATCH",
-"GET",
-"DROP"
+"Modifier partiellement",
+"Lire",
+"Créer",
+"Supprimer"
 ],
-
-r:1,
-
-exp:"PATCH modifie partiellement."
-
+r:0,
+exp:"PATCH modifie champs envoyés."
 },
 
 {
-
-q:"Tu remplaces complètement un utilisateur ?",
-
-
+q:"PUT sert à :",
 a:[
-"PATCH",
-"PUT",
-"POST",
-"GET"
+"Modifier partiel",
+"Remplacer totalement",
+"Lire",
+"Supprimer"
 ],
-
 r:1,
-
-exp:"PUT remplace ressource entière."
-
+exp:"PUT remplace ressource."
 },
 
 {
-
-q:"Quelle commande lance serveur MkDocs ?",
-
-
+q:"Code HTTP 200 signifie :",
 a:[
-"mkdocs serve",
+"Succès / OK",
+"Erreur serveur",
+"Introuvable",
+"Redirection"
+],
+r:0,
+exp:"200 OK = succès."
+},
+
+{
+q:"404 Not Found signifie :",
+a:[
+"Succès",
+"Non trouvé",
+"Erreur serveur",
+"Connexion refusée"
+],
+r:1,
+exp:"404 = ressource absente."
+},
+
+{
+q:"500 Internal Server Error signifie :",
+a:[
+"Erreur serveur",
+"Erreur client",
+"Succès",
+"Cache"
+],
+r:0,
+exp:"500 = problème serveur."
+},
+
+{
+q:"401 Unauthorized signifie :",
+a:[
+"Pas authentifié",
+"Succès",
+"Erreur serveur",
+"Redirect"
+],
+r:0,
+exp:"401 = utilisateur non connecté."
+},
+
+{
+q:"403 Forbidden signifie :",
+a:[
+"Pas autorisé",
+"Pas trouvé",
+"Succès",
+"Server down"
+],
+r:0,
+exp:"403 = droits refusés."
+},
+
+{
+q:"301 signifie :",
+a:[
+"Redirection permanente",
+"Succès",
+"Erreur",
+"Delete"
+],
+r:0,
+exp:"301 = redirect permanent."
+},
+
+{
+q:"Quelle commande MkDocs crée projet ?",
+a:[
+"mkdocs new",
 "mkdocs start",
 "mkdocs run",
-"mkdocs launch"
+"mkdocs create"
 ],
-
 r:0,
-
-exp:"Seules new serve build existent."
-
+exp:"new crée projet."
 },
 
 {
-
-q:"Quel fichier configure MkDocs ?",
-
-
+q:"Quelle commande génère site statique ?",
 a:[
-"index.md",
+"mkdocs build",
+"mkdocs run",
+"mkdocs deploy",
+"mkdocs compile"
+],
+r:0,
+exp:"build génère site."
+},
+
+{
+q:"Quel fichier configure site MkDocs ?",
+a:[
 "mkdocs.yml",
 "config.json",
-"main.md"
+"index.md",
+"main.py"
 ],
-
-r:1,
-
-exp:"mkdocs.yml = config principale."
-
+r:0,
+exp:"mkdocs.yml."
 },
 
 {
-
-q:"Quelle syntaxe Markdown crée titre niveau 1 ?",
-
-
+q:"Quelle syntaxe crée titre principal ?",
 a:[
 "# Titre",
 "## Titre",
 "***Titre",
 ">Titre"
 ],
-
 r:0,
-
-exp:"Un seul # = H1."
-
+exp:"H1 = #."
 },
 
 {
-
-q:"Quelle syntaxe crée lien Markdown ?",
-
-
+q:"Comment écrire du code inline ?",
 a:[
-"(text)(url)",
+"`code`",
+"***code***",
+"(code)",
+"//code"
+],
+r:0,
+exp:"1 backtick."
+},
+
+{
+q:"Combien de backticks bloc code ?",
+a:[
+"1",
+"2",
+"3",
+"5"
+],
+r:2,
+exp:"3 backticks."
+},
+
+{
+q:"Lien markdown correct ?",
+a:[
 "[text](url)",
+"(text)[url]",
 "url(text)",
 "{text}"
 ],
-
-r:1,
-
-exp:"Standard markdown."
-
-},
-
-{
-
-q:"Dans README quelle section vient avant installation ?",
-
-
-a:[
-"Licence",
-"Description",
-"Contact",
-"Contribution"
-],
-
-r:1,
-
-exp:"Description toujours avant."
-
-},
-
-{
-
-q:"Dans Notion que fait /code ?",
-
-
-a:[
-"image",
-"code block",
-"table",
-"titre"
-],
-
-r:1,
-
-exp:"/code crée bloc code."
-
-},
-
-{
-
-q:"Quel code HTTP signifie succès ?",
-
-
-a:[
-"200",
-"404",
-"500",
-"301"
-],
-
 r:0,
-
-exp:"200 = OK."
-
+exp:"Syntaxe standard."
 },
 
 {
-
-q:"401 signifie ?",
-
-
+q:"Liste tâche correcte ?",
 a:[
-"non authentifié",
-"server error",
-"success",
-"redirect"
+"- [x]",
+"(x)",
+"[x]",
+"{x}"
 ],
-
 r:0,
-
-exp:"401 = pas connecté."
-
+exp:"GitHub markdown."
 },
 
 {
-
-q:"403 signifie ?",
-
-
+q:"Dans README ordre logique ?",
 a:[
-"pas autorisé",
-"error serveur",
-"OK",
-"redirect"
+"Titre description installation",
+"Licence install titre",
+"API titre install",
+"Contact licence"
 ],
-
 r:0,
-
-exp:"403 = pas droit."
-
+exp:"Structure standard."
 },
+
+{
+q:"Notion fonctionne avec :",
+a:[
+"Pages",
+"Fichiers",
+"Servers",
+"APIs"
+],
+r:0,
+exp:"Tout est page."
+},
+
+{
+q:"Commande Notion pour code ?",
+a:[
+"/code",
+"/text",
+"/image",
+"/api"
+],
+r:0,
+exp:"Slash command."
+},
+
+{
+q:"Vue Notion Kanban ?",
+a:[
+"Board",
+"Graph",
+"Text",
+"Slide"
+],
+r:0,
+exp:"Board = Kanban."
+},
+
+{
+q:"Graphique pour tendance ?",
+a:[
+"Courbe",
+"Camembert",
+"Table",
+"Liste"
+],
+r:0,
+exp:"Line chart."
+},
+
+{
+q:"Graphique pour proportions ?",
+a:[
+"Secteurs",
+"Lignes",
+"Colonnes",
+"Texte"
+],
+r:0,
+exp:"Pie chart."
+},
+
+{
+q:"Règle PowerPoint ?",
+a:[
+"6x6",
+"10x10",
+"3x3",
+"4x4"
+],
+r:0,
+exp:"6 lignes 6 mots."
+},
+
+{
+q:"Documentation API décrit :",
+a:[
+"Endpoints",
+"Couleurs",
+"Images",
+"CSS"
+],
+r:0,
+exp:"Endpoints."
+},
+
+{
+q:"Technical writer fait :",
+a:[
+"Documentation",
+"Code backend",
+"UI design",
+"DevOps"
+],
+r:0,
+exp:"Rédaction doc."
+},
+
+{
+q:"2xx signifie :",
+a:[
+"Succès",
+"Erreur",
+"Redirection",
+"Crash"
+],
+r:0,
+exp:"2 = success."
+
+}
 
 ];
