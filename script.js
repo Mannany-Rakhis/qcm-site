@@ -10,13 +10,15 @@ let j=Math.floor(Math.random()*(i+1));
 
 }
 
-shuffle(banque);
+let questions=[...banque];
 
-let questions=banque.slice(0,30);
+shuffle(questions);
+
+questions=questions.slice(0,30);
 
 let quiz=document.getElementById("quiz");
 
-let answeredSet=new Set();
+let answered=new Set();
 
 questions.forEach((q,i)=>{
 
@@ -60,10 +62,10 @@ document.addEventListener("change",(e)=>{
 
 if(e.target.type=="radio"){
 
-answeredSet.add(e.target.name);
+answered.add(e.target.name);
 
 let progress=
-(answeredSet.size/30)*100;
+(answered.size/30)*100;
 
 document.getElementById("bar").style.width=
 progress+"%";
