@@ -1,19 +1,31 @@
 let banque=[
 
 {
-q:"Dans Excel que fait =SOMME(A1:A5) ?",
+q:"Dans Excel que fait =SOMME(A1:A10) ?",
 a:[
-"Additionne cellules",
-"Supprime données",
-"Trie tableau",
-"Multiplie valeurs"
+"Additionne les cellules",
+"Supprime les données",
+"Trie les valeurs",
+"Multiplie les nombres"
 ],
 r:0,
-exp:"SOMME additionne toutes les cellules."
+exp:"SOMME additionne une plage."
 },
 
 {
-q:"Quelle méthode HTTP lit des données ?",
+q:"Quelle formule correspond à A1+A2+A3 ?",
+a:[
+"=SOMME(A1:A3)",
+"=ADD(A1:A3)",
+"=PLUS(A1:A3)",
+"=TOTAL(A1:A3)"
+],
+r:0,
+exp:"Excel FR utilise SOMME."
+},
+
+{
+q:"Quelle méthode HTTP sert à lire des données ?",
 a:[
 "GET",
 "POST",
@@ -21,11 +33,11 @@ a:[
 "PATCH"
 ],
 r:0,
-exp:"GET = lecture."
+exp:"GET = Read."
 },
 
 {
-q:"Quelle méthode crée une ressource ?",
+q:"Quelle méthode HTTP sert à créer ?",
 a:[
 "GET",
 "POST",
@@ -37,43 +49,43 @@ exp:"POST = Create."
 },
 
 {
-q:"PATCH sert à :",
+q:"Quelle méthode modifie partiellement ?",
 a:[
-"Modifier partiellement",
-"Lire",
-"Créer",
-"Supprimer"
+"PATCH",
+"GET",
+"POST",
+"DELETE"
 ],
 r:0,
-exp:"PATCH modifie champs envoyés."
+exp:"PATCH modifie champs."
 },
 
 {
-q:"PUT sert à :",
+q:"Quelle méthode remplace totalement ?",
 a:[
-"Modifier partiel",
-"Remplacer totalement",
-"Lire",
-"Supprimer"
+"PATCH",
+"PUT",
+"GET",
+"DELETE"
 ],
 r:1,
-exp:"PUT remplace ressource."
+exp:"PUT remplace."
 },
 
 {
-q:"Code HTTP 200 signifie :",
+q:"Code HTTP 200 ?",
 a:[
-"Succès / OK",
-"Erreur serveur",
-"Introuvable",
-"Redirection"
+"Succès",
+"Erreur",
+"Pas trouvé",
+"Redirect"
 ],
 r:0,
-exp:"200 OK = succès."
+exp:"200 OK."
 },
 
 {
-q:"404 Not Found signifie :",
+q:"404 signifie ?",
 a:[
 "Succès",
 "Non trouvé",
@@ -81,11 +93,11 @@ a:[
 "Connexion refusée"
 ],
 r:1,
-exp:"404 = ressource absente."
+exp:"Not Found."
 },
 
 {
-q:"500 Internal Server Error signifie :",
+q:"500 signifie ?",
 a:[
 "Erreur serveur",
 "Erreur client",
@@ -93,11 +105,47 @@ a:[
 "Cache"
 ],
 r:0,
-exp:"500 = problème serveur."
+exp:"Internal server error."
 },
 
 {
-q:"Quelle commande MkDocs crée projet ?",
+q:"401 signifie ?",
+a:[
+"Pas authentifié",
+"Succès",
+"Erreur serveur",
+"Redirect"
+],
+r:0,
+exp:"Unauthorized."
+},
+
+{
+q:"403 signifie ?",
+a:[
+"Pas autorisé",
+"Pas trouvé",
+"Succès",
+"Crash"
+],
+r:0,
+exp:"Forbidden."
+},
+
+{
+q:"301 signifie ?",
+a:[
+"Redirection permanente",
+"Succès",
+"Erreur",
+"Delete"
+],
+r:0,
+exp:"Permanent redirect."
+},
+
+{
+q:"Quelle commande crée projet MkDocs ?",
 a:[
 "mkdocs new",
 "mkdocs start",
@@ -105,11 +153,35 @@ a:[
 "mkdocs create"
 ],
 r:0,
-exp:"new crée projet."
+exp:"mkdocs new."
 },
 
 {
-q:"Quel fichier configure site MkDocs ?",
+q:"Commande serveur MkDocs ?",
+a:[
+"mkdocs serve",
+"mkdocs run",
+"mkdocs start",
+"mkdocs launch"
+],
+r:0,
+exp:"serve lance local."
+},
+
+{
+q:"Commande générer site ?",
+a:[
+"mkdocs build",
+"mkdocs compile",
+"mkdocs deploy",
+"mkdocs make"
+],
+r:0,
+exp:"build."
+},
+
+{
+q:"Fichier config MkDocs ?",
 a:[
 "mkdocs.yml",
 "config.json",
@@ -117,11 +189,11 @@ a:[
 "main.py"
 ],
 r:0,
-exp:"mkdocs.yml."
+exp:"Configuration principale."
 },
 
 {
-q:"Quelle syntaxe crée titre principal ?",
+q:"Syntaxe titre principal Markdown ?",
 a:[
 "# Titre",
 "## Titre",
@@ -129,11 +201,11 @@ a:[
 ">Titre"
 ],
 r:0,
-exp:"H1 = #."
+exp:"H1."
 },
 
 {
-q:"Comment écrire du code inline ?",
+q:"Syntaxe code inline ?",
 a:[
 "`code`",
 "***code***",
@@ -141,13 +213,13 @@ a:[
 "//code"
 ],
 r:0,
-exp:"1 backtick."
+exp:"Backtick."
 },
 
 {
-q:"Combien de backticks bloc code ?",
+q:"Bloc code utilise ?",
 a:[
-"1",
+"1 backtick",
 "2",
 "3",
 "5"
@@ -165,7 +237,7 @@ a:[
 "{text}"
 ],
 r:0,
-exp:"Syntaxe standard."
+exp:"Standard."
 },
 
 {
@@ -177,23 +249,47 @@ a:[
 "{x}"
 ],
 r:0,
-exp:"GitHub markdown."
+exp:"GitHub syntax."
 },
 
 {
-q:"Notion fonctionne avec :",
+q:"Dans README première section ?",
+a:[
+"Titre",
+"Licence",
+"Contact",
+"API"
+],
+r:0,
+exp:"Titre projet."
+},
+
+{
+q:"Notion fonctionne avec ?",
 a:[
 "Pages",
 "Fichiers",
 "Servers",
-"APIs"
+"API"
 ],
 r:0,
-exp:"Tout est page."
+exp:"Pages."
 },
 
 {
-q:"Vue Notion Kanban ?",
+q:"Commande /code Notion ?",
+a:[
+"Bloc code",
+"Image",
+"Table",
+"Titre"
+],
+r:0,
+exp:"Code block."
+},
+
+{
+q:"Vue Kanban Notion ?",
 a:[
 "Board",
 "Graph",
@@ -201,11 +297,11 @@ a:[
 "Slide"
 ],
 r:0,
-exp:"Board = Kanban."
+exp:"Board."
 },
 
 {
-q:"Graphique pour tendance ?",
+q:"Graphique évolution temps ?",
 a:[
 "Courbe",
 "Camembert",
@@ -213,7 +309,19 @@ a:[
 "Liste"
 ],
 r:0,
-exp:"Line chart."
+exp:"Line."
+},
+
+{
+q:"Graphique proportions ?",
+a:[
+"Secteurs",
+"Lignes",
+"Colonnes",
+"Texte"
+],
+r:0,
+exp:"Pie chart."
 },
 
 {
@@ -225,28 +333,31 @@ a:[
 "4x4"
 ],
 r:0,
-exp:"6 lignes 6 mots."
+exp:"6 lignes."
 },
 
 {
-q:"2xx signifie :",
+q:"Documentation API décrit ?",
+a:[
+"Endpoints",
+"Couleurs",
+"Images",
+"CSS"
+],
+r:0,
+exp:"Endpoints."
+},
+
+{
+q:"2xx signifie ?",
 a:[
 "Succès",
 "Erreur",
-"Redirection",
+"Redirect",
 "Crash"
 ],
 r:0,
-exp:"2 = success."
+exp:"Success."
 }
 
 ];
-
-// compléter pour 60
-while(banque.length<60){
-
-banque.push(
-banque[Math.floor(Math.random()*20)]
-);
-
-}
