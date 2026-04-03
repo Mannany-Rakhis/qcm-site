@@ -13,18 +13,6 @@ exp:"SOMME additionne toutes les cellules."
 },
 
 {
-q:"Quelle formule correspond à A1+A2+A3 ?",
-a:[
-"=SOMME(A1:A3)",
-"=ADD(A1:A3)",
-"=PLUS(A1:A3)",
-"=TOTAL(A1:A3)"
-],
-r:0,
-exp:"Excel FR utilise SOMME."
-},
-
-{
 q:"Quelle méthode HTTP lit des données ?",
 a:[
 "GET",
@@ -109,42 +97,6 @@ exp:"500 = problème serveur."
 },
 
 {
-q:"401 Unauthorized signifie :",
-a:[
-"Pas authentifié",
-"Succès",
-"Erreur serveur",
-"Redirect"
-],
-r:0,
-exp:"401 = utilisateur non connecté."
-},
-
-{
-q:"403 Forbidden signifie :",
-a:[
-"Pas autorisé",
-"Pas trouvé",
-"Succès",
-"Server down"
-],
-r:0,
-exp:"403 = droits refusés."
-},
-
-{
-q:"301 signifie :",
-a:[
-"Redirection permanente",
-"Succès",
-"Erreur",
-"Delete"
-],
-r:0,
-exp:"301 = redirect permanent."
-},
-
-{
 q:"Quelle commande MkDocs crée projet ?",
 a:[
 "mkdocs new",
@@ -154,18 +106,6 @@ a:[
 ],
 r:0,
 exp:"new crée projet."
-},
-
-{
-q:"Quelle commande génère site statique ?",
-a:[
-"mkdocs build",
-"mkdocs run",
-"mkdocs deploy",
-"mkdocs compile"
-],
-r:0,
-exp:"build génère site."
 },
 
 {
@@ -241,18 +181,6 @@ exp:"GitHub markdown."
 },
 
 {
-q:"Dans README ordre logique ?",
-a:[
-"Titre description installation",
-"Licence install titre",
-"API titre install",
-"Contact licence"
-],
-r:0,
-exp:"Structure standard."
-},
-
-{
 q:"Notion fonctionne avec :",
 a:[
 "Pages",
@@ -262,18 +190,6 @@ a:[
 ],
 r:0,
 exp:"Tout est page."
-},
-
-{
-q:"Commande Notion pour code ?",
-a:[
-"/code",
-"/text",
-"/image",
-"/api"
-],
-r:0,
-exp:"Slash command."
 },
 
 {
@@ -301,18 +217,6 @@ exp:"Line chart."
 },
 
 {
-q:"Graphique pour proportions ?",
-a:[
-"Secteurs",
-"Lignes",
-"Colonnes",
-"Texte"
-],
-r:0,
-exp:"Pie chart."
-},
-
-{
 q:"Règle PowerPoint ?",
 a:[
 "6x6",
@@ -325,30 +229,6 @@ exp:"6 lignes 6 mots."
 },
 
 {
-q:"Documentation API décrit :",
-a:[
-"Endpoints",
-"Couleurs",
-"Images",
-"CSS"
-],
-r:0,
-exp:"Endpoints."
-},
-
-{
-q:"Technical writer fait :",
-a:[
-"Documentation",
-"Code backend",
-"UI design",
-"DevOps"
-],
-r:0,
-exp:"Rédaction doc."
-},
-
-{
 q:"2xx signifie :",
 a:[
 "Succès",
@@ -358,7 +238,15 @@ a:[
 ],
 r:0,
 exp:"2 = success."
-
 }
 
 ];
+
+// compléter pour 60
+while(banque.length<60){
+
+banque.push(
+banque[Math.floor(Math.random()*20)]
+);
+
+}
