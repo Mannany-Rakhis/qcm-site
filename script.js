@@ -1,126 +1,76 @@
-function shuffle(array){
+let questions = [];
+let index = 0;
+let score = 0;
 
-for(let i=array.length-1;i>0;i--){
-
-let j=Math.floor(Math.random()*(i+1));
-
-[array[i],array[j]]=[array[j],array[i]];
-
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
 }
 
+function startQuiz() {
+    questions = shuffle([...banque]).slice(0, 5);
+    index = 0;
+    score = 0;
+    document.getElementById("result").classList.add("hidden");
+    document.getElementById("quiz").classList.remove("hidden");
+    showQuestion();
 }
 
-let questions=[...banque];
+function showQuestion() {
+    let q = questions[index];
+    document.getElementById("question").innerText = q.q;
+    document.getElementById("feedback").innerText = "";
+    document.getElementById("explication").innerText = "";
 
-shuffle(questions);
+    let html = "";
+    q.a.forEach((choice, i) => {
+        html += `<button onclick="check(${i})">${choice}</button>`;
+    });
 
-questions=questions.slice(0,30);
-
-let quiz=document.getElementById("quiz");
-
-let answered=new Set();
-
-questions.forEach((q,i)=>{
-
-let div=document.createElement("div");
-
-div.className="question";
-
-let html="<p>"+(i+1)+". "+q.q+"</p>";
-
-let reps=[...q.a];
-
-shuffle(reps);
-
-reps.forEach(rep=>{
-
-html+=`
-
-<label>
-
-<input type="radio"
-name="q${i}"
-value="${q.a.indexOf(rep)}">
-
-${rep}
-
-</label>
-
-`;
-
-});
-
-html+=`<div class="exp" id="exp${i}"></div>`;
-
-div.innerHTML=html;
-
-quiz.appendChild(div);
-
-});
-
-document.addEventListener("change",(e)=>{
-
-if(e.target.type=="radio"){
-
-answered.add(e.target.name);
-
-let progress=
-(answered.size/30)*100;
-
-document.getElementById("bar").style.width=
-progress+"%";
-
+    document.getElementById("choices").innerHTML = html;
 }
 
-});
+function check(i) {
+    let q = questions[index];
+    let buttons = document.querySelectorAll("#choices button");
 
-function corriger(){
+    buttons.forEach((btn, idx) => {
+        btn.disabled = true;
 
-let score=0;
+        if (idx === q.r) {
+            btn.classList.add("correct");
+        } else if (idx === i) {
+            btn.classList.add("wrong");
+        }
+    });
 
-let divs=document.querySelectorAll(".question");
+    if (i === q.r) {
+        score++;
+        document.getElementById("feedback").innerText = "✅ Bonne réponse";
+    } else {
+        document.getElementById("feedback").innerText = "❌ Mauvaise réponse";
+    }
 
-questions.forEach((q,i)=>{
-
-let choix=document.querySelector(
-`input[name=q${i}]:checked`
-);
-
-if(!choix)return;
-
-if(choix.value==q.r){
-
-score++;
-
-divs[i].classList.add("correct");
-
+    document.getElementById("explication").innerText = q.exp;
 }
 
-else{
+document.getElementById("nextBtn").onclick = () => {
+    index++;
+    if (index < questions.length) {
+        showQuestion();
+    } else {
+        endQuiz();
+    }
+};
 
-divs[i].classList.add("wrong");
-
+function endQuiz() {
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("score").innerText =
+        "Score : " + score + " / " + questions.length;
 }
 
-document.getElementById("exp"+i).innerHTML=
-q.exp;
-
-});
-
-document.getElementById("result").innerHTML=
-
-"Score : "+score+"/30";
-
-let best=localStorage.getItem("best");
-
-if(!best || score>best){
-
-localStorage.setItem("best",score);
-
+function restart() {
+    startQuiz();
 }
 
-document.getElementById("best").innerHTML=
-
-"Meilleur score : "+localStorage.getItem("best");
-
-}
+startQuiz();
